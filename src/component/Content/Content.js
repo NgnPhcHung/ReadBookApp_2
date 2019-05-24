@@ -10,23 +10,25 @@ export default class Content extends Component {
     this.props.navigation.navigate('Content')
   }
   static navigationOptions = {
-    title : 'Hello !!!',
+    title: 'Hello !!!',
     headerStyle: {
       backgroundColor: '#EBF5FB',
     },
-    headerTitleStyle : {
-      paddingLeft : "35%"
+    headerTitleStyle: {
+      paddingLeft: "35%"
     }
   }
   render() {
     return (
       <View>
-        <Logo />
+        <View style = {{ alignItems: 'center', justifyContent: 'center', }} >
+          <Logo />
+        </View>
         <View style={styles.onLine} >
           <View>
-            <CustomButton 
-              onPress = {() => this.props.navigation.navigate('Details')}
-              text = "Online Book"
+            <CustomButton
+              onPress={() => this.props.navigation.navigate('Details')}
+              text="Online Book"
             />
           </View>
         </View>
