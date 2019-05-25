@@ -1,5 +1,5 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation'
-import BookMS from '../BookContent/OnlineBook'
+import BookMS from '../../container/OnlineBook'
 import Home from '../Content'
 const RootStack = createStackNavigator ({
   Home: {

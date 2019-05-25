@@ -1,10 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppContent from './src/component/ScreenManager'
+import store from './src/store'
+import { Provider } from 'react-redux'
+
 export default class App extends React.Component {
   render() {
     return (
-      <AppContent />
+      <Provider store={store}>
+        <AppContent />
+      </Provider>
     );
   }
 }

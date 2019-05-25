@@ -1,14 +1,34 @@
 import React, { Component } from 'react'
-import { View, Text, WebView} from 'react-native'
-// import PdfReader from 'rn-pdf-reader-js'
+import { View, Text, WebView, Button } from 'react-native'
+import OnlineBookModal from './OnlineBookContainer'
+import CustomButton from '../../Button/ButtonCustom'
 
 export default class index extends Component {
+  change( ){
+    const {change, isOpenModalReducer} = this.props
+    change()
+    console.log(isOpenModalReducer)
+  }
   render() {
-    // const sourse = require('./PDF/document.pdf')
+    const { isOpenModalReducer, change} = this.props
     return (
-      <WebView
-      source = {{ uri: 'https://drive.google.com/file/d/10N4dTq4W2HknZioXBSoNfV9NSt0nCyoy/view?usp=sharing' }}
-      />
+      <View>
+        <CustomButton 
+        style = { styles.button }
+          onPress = { () => this.change() }
+          text="Open"
+        />
+        <OnlineBookModal 
+          isOpen = { isOpenModalReducer }
+          change= { change }
+        />
+      </View>
     )
+  }
+}
+const styles = { 
+  button:  {
+    width: 50,
+    height: 40
   }
 }
