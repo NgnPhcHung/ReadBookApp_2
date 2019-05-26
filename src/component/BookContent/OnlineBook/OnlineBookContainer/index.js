@@ -4,6 +4,28 @@ import CustomButton from '../../../Button/ButtonCustom'
 import PDFReader from 'rn-pdf-reader-js'
 
 export default class index extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoading:true,
+      dataSourse:[], 
+      itemURL:''
+    }
+  }
+  
+  componentDidMount(){
+    fetch('http://openlibrary.org/api/volumes/brief/json/id:1;lccn:50006784|olid:OL6179000M;lccn:55011330')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      this.setState({
+        isLoading:false,
+        dataSourse: responseJson,
+        itemURL: responseJson[1].items[0].itemURL
+      })
+      console.log(responseJson[1].items[0].itemURL)
+    })
+  }
+
   change = () => {
     const { change } = this.props
     change()
@@ -12,20 +34,7 @@ export default class index extends Component {
     const { isOpen } = this.props
     return (
       <View>
-        <Modal visible={isOpen}
-          onRequestClose={() => console.warn("this is warn")}>
-          <View
-            style={styles.modal}>
-            <Text>This is modal</Text>
-            <WebView
-              source={{ uri: 'https://github.com/facebook/react-native' }}
-            />
-            <CustomButton
-              onPress={() => this.change()}
-              text="Close"
-            />
-          </View>
-        </Modal>
+        <Text>hi there</Text>
       </View>
     )
   }
